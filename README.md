@@ -6,10 +6,36 @@
 a shell script for managing airpods and airpods pro on linux.  
 
 ## Dependencies
+* https://build.opensuse.org/package/show/home:tdoerges/phonesim
+* https://software.opensuse.org/package/ofono
+* https://software.opensuse.org/package/ofono-tests
+* OpenSuse Leap 15.1
+
 ```
-sudo add-apt-repository ppa:smoser/bluetooth  
-sudo apt-get install ofono-phonesim ofono  
-git clone https://github.com/rilmodem/ofono.git /opt/ofono  
+sudo zypper addrepo https://download.opensuse.org/repositories/home:tdoerges/openSUSE_Leap_15.1/home:tdoerges.repo
+sudo zypper refresh
+sudo zypper install phonesim ofono ofono-tests
+git clone https://github.com/in0rdr/pulseaudio-airpods.git /opt/ofono
+```
+
+Configure phonesim modem:
+```
+tee /etc/ofono/phonesim.conf <<EOF
+# This is a sample file for the phonesim configuration
+#
+# It should be installed in your oFono system directory,
+# e.g. /etc/ofono/phonesim.conf
+#
+# Each group is parsed as a modem device
+#
+# Each group shall at least define the address and port
+#   Address = <valid IPv4 address format>
+#   Port = <valid TCP port>
+
+[phonesim]
+Address=127.0.0.1
+Port=12345
+EOF
 ```
 
 ## Tweak the script for first time
@@ -25,6 +51,10 @@ pusleaudio-airpods connect/toggle_profile/disconnect
 ```
 ## Note
 you should first pair your airpods using blueman and trust them to use this script
+
+## Links
+
+https://zambrovski.medium.com/using-bluetooth-headset-on-ubuntu-790ce6eecc2
 
 ## Contributions are welcome
 
