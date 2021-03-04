@@ -49,6 +49,38 @@ AIRPODS_NAME='bluez_card.4C_6B_E8_80_46_84' # you can find this using 'pactl lis
 ```
 pusleaudio-airpods connect/toggle_profile/disconnect
 ```
+
+## Check
+
+Check the modem:
+```
+/usr/lib64/ofono/test/list-modems 
+[ /phonesim ]
+    Online = 0
+    Powered = 1
+    Lockdown = 0
+    Emergency = 0
+    Manufacturer = MeeGo
+    Model = Synthetic Device
+    Revision = REV1
+    Serial = 1234567890
+    Interfaces = org.ofono.VoiceCallManager org.ofono.SimManager 
+    Features = sim 
+    Type = hardware
+    [ org.ofono.VoiceCallManager ]
+        EmergencyNumbers = 118 110 08 911 000 112 999 119 
+    [ org.ofono.SimManager ]
+        Present = 1
+        CardIdentifier = 8949222074451242066
+        FixedDialing = 0
+        BarredDialing = 0
+        SubscriberNumbers = 
+        LockedPins = 
+        PreferredLanguages = de en it fr es nl 
+        PinRequired = none
+        Retries = 
+```
+
 ## Note
 you should first pair your airpods using blueman and trust them to use this script
 
