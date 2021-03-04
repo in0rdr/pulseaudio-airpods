@@ -3,8 +3,8 @@
 # Author: Akhil Jalagam
 
 # replace MAC and card name here first time
-AIRPODS_MAC='4C:6B:E8:80:46:84' # it should be in blueman-manager
-AIRPODS_NAME='bluez_card.4C_6B_E8_80_46_84' # you can find this using 'pactl list cards' command
+AIRPODS_MAC='AC:1D:06:4F:A2:07' # it should be in blueman-manager
+AIRPODS_NAME='bluez_card.AC_1D_06_4F_A2_07' # you can find this using 'pactl list cards' command
 
 case "$1" in
     connect)
@@ -12,8 +12,8 @@ case "$1" in
         sleep 3
         bluetoothctl connect $AIRPODS_MAC
         sudo systemctl start ofono
-        nohup ofono-phonesim -p 12345 /usr/share/phonesim/default.xml &> /tmp/ofono-phonesim.nohup &
-        /opt/ofono/test/enable-modem /phonesim
+        nohup phonesim -p 12345 /usr/share/phonesim/default.xml &> /tmp/ofono-phonesim.nohup &
+        /usr/lib64/ofono/test/enable-modem /phonesim
         pactl set-card-profile $AIRPODS_NAME headset_head_unit
     ;;
     toggle_profile)
